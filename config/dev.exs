@@ -24,7 +24,8 @@ config :lifeline_phoenix, LifelinePhoenixWeb.Endpoint,
   secret_key_base: "+rZlsTfKhhSmOO75LYSj0usSJnkByCrZaMPN7UIVb4oOesgDBdvElTuRFvXgrM32",
   watchers: [
     # Start the esbuild watcher by calling Esbuild.install_and_run(:default, args)
-    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]}
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    tailwind: {Tailwind, :install_and_run, [:default, ~w(--watch)]}
   ]
 
 # ## SSL Support
