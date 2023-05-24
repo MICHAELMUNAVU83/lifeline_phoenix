@@ -3,6 +3,9 @@ defmodule LifelinePhoenixWeb.PatientController do
 
   alias LifelinePhoenix.Patients
   alias LifelinePhoenix.Patients.Patient
+  alias LifelinePhoenix.Reviews.Review
+  alias LifelinePhoenix.Reviews
+
 
   def index(conn, _params) do
     patients = Patients.list_patients()
@@ -60,4 +63,26 @@ defmodule LifelinePhoenixWeb.PatientController do
     |> put_flash(:info, "Patient deleted successfully.")
     |> redirect(to: Routes.patient_path(conn, :index))
   end
+
+
+  def add_a_drug_allergy(conn, %{"drug_allergy" => drug_allergy_params, "patient_id" => patient_id}) do
+   patient =
+     patient_id
+      |> Patients.get_book!()
+      |> Repo.preload([:drug_allergies])
+     case Patients.add_drug_allergy(patient_id, drug_allergy_params) do
+      {:ok, _drug_allergy} ->
+        conn
+        |> put_flash(:info, "drug_allergy added :)")
+        |> redirect(to: Routes.patient_path(conn, :show, patient))
+      {:error, _error} ->
+        conn
+        |> put_flash(:error, "drug_allergy not added :(")
+        |> redirect(to: Routes.patient_path(conn, :show, patient))
+
+    end
+  end
+
+
+  
 end

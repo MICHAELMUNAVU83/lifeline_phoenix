@@ -6,6 +6,15 @@ defmodule LifelinePhoenix.Accounts.Doctor do
     field :email, :string
     field :password, :string, virtual: true, redact: true
     field :hashed_password, :string, redact: true
+    field :last_name, :string
+    field :first_name, :string
+    field :phone_number, :integer
+    field :password_confirmation, :string
+    field :national_doctor_id, :integer
+    field :hospital_name, :string
+
+
+
     field :confirmed_at, :naive_datetime
     has_many(:patients, LifelinePhoenix.Patients.Patient)
 
@@ -31,24 +40,34 @@ defmodule LifelinePhoenix.Accounts.Doctor do
   """
   def registration_changeset(doctor, attrs, opts \\ []) do
     doctor
-    |> cast(attrs, [:email, :password])
+    |> cast(attrs, [:email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :national_doctor_id, :hospital_name])
     |> validate_email()
     |> validate_password(opts)
+    |> validate_required([:first_name, :last_name, :phone_number, :national_doctor_id, :hospital_name])
+    |> unique_constraint(:email)
+    |> unique_constraint(:national_doctor_id)
+    |> validate_confirmation(:password)
+
+
+
+
+
   end
 
   defp validate_email(changeset) do
     changeset
     |> validate_required([:email])
-    |> validate_format(:email, ~r/^[^\s]+@[^\s]+$/, message: "must have the @ sign and no spaces")
+    |> validate_format(:email, ~r/@gmail.com/, message: "must be a gmail account")
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, LifelinePhoenix.Repo)
     |> unique_constraint(:email)
+
   end
 
   defp validate_password(changeset, opts) do
     changeset
     |> validate_required([:password])
-    |> validate_length(:password, min: 12, max: 72)
+    |> validate_length(:password, min: 6, max: 8)
     # |> validate_format(:password, ~r/[a-z]/, message: "at least one lower case character")
     # |> validate_format(:password, ~r/[A-Z]/, message: "at least one upper case character")
     # |> validate_format(:password, ~r/[!?@#$%^&*_0-9]/, message: "at least one digit or punctuation character")

@@ -24,6 +24,8 @@ defmodule LifelinePhoenixWeb.Router do
     resources "/patients", PatientController do
       post "/drug_allergies", PatientController, :add_a_drug_allergy
       post "/food_allergies", PatientController, :add_a_food_allergy
+      
+
     end
   end
 

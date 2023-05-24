@@ -15,6 +15,42 @@
   <%= password_input f, :password, required: true %>
   <%= error_tag f, :password %>
 
+
+  <%= label f, :password_confirmation %>
+  <%= password_input f, :password_confirmation, required: true %>
+  <%= error_tag f, :password_confirmation %>
+
+
+  <%= label f, :first_name %>
+  <%= text_input f, :first_name, required: true %>
+  <%= error_tag f, :first_name %>
+
+  <%= label f, :last_name %>
+
+  <%= text_input f, :last_name, required: true %>
+  <%= error_tag f, :last_name %>
+
+  <%= label f, :phone_number %>
+  <%= number_input f, :phone_number, required: true %>
+
+  <%= error_tag f, :phone_number %>
+
+  <%= label f, :hospital_name %>
+
+  <%= text_input f, :hospital_name, required: true %>
+  <%= error_tag f, :hospital_name %>
+
+  <%= label f, :national_doctor_id %>
+
+  <%= number_input f, :national_doctor_id, required: true %>
+  <%= error_tag f, :national_doctor_id %>
+
+
+
+
+
+
+
   <div>
     <%= submit "Register" %>
   </div>

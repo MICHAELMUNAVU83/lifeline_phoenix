@@ -7,6 +7,7 @@ defmodule LifelinePhoenix.Patients do
   alias LifelinePhoenix.Repo
 
   alias LifelinePhoenix.Patients.Patient
+  alias LifelinePhoenix.DrugAllergies
 
   @doc """
   Returns the list of patients.
@@ -100,5 +101,13 @@ defmodule LifelinePhoenix.Patients do
   """
   def change_patient(%Patient{} = patient, attrs \\ %{}) do
     Patient.changeset(patient, attrs)
+  end
+
+
+  def add_drug_allergy(patient_id , drug_allergy_params) do
+    drug_allergy_params
+    |> Map.put("patient_id", patient_id)
+    |> DrugAllergies.create_drug_allergy()
+
   end
 end
