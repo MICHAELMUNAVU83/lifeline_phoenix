@@ -9,7 +9,7 @@ defmodule LifelinePhoenix.Accounts.Doctor do
     field :last_name, :string
     field :first_name, :string
     field :phone_number, :integer
-    field :password_confirmation, :string
+    field :password_confirmation, :string , redact: true
     field :national_doctor_id, :integer
     field :hospital_name, :string
 
@@ -88,6 +88,9 @@ defmodule LifelinePhoenix.Accounts.Doctor do
       changeset
     end
   end
+
+
+
 
   @doc """
   A doctor changeset for changing the email.

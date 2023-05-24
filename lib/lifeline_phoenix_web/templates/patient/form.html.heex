@@ -26,7 +26,9 @@
 
     <div class="flex flex-col">
 
-  <%= label f, :national_id %>
+  <p>
+    National Doctor ID
+  </p>
   <%= number_input f, :national_id , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   <%= error_tag f, :national_id %>
 
@@ -43,8 +45,20 @@
     <div class="flex flex-col">
 
   <%= label f, :blood_group %>
-  <%= text_input f, :blood_group , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
+ <%= select f, :blood_group, ["Select one","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300" %>
+
   <%= error_tag f, :blood_group %>
+
+  </div>
+
+
+
+   <div class="flex flex-col">
+
+  <%= label f, :gender %>
+ <%= select f, :gender, ["Select one","male", "female"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300" %>
+
+  <%= error_tag f, :gender %>
 
   </div>
 
@@ -95,6 +109,6 @@
 
   <div class="flex justify-center my-4  items-center gap-4">
     <%= submit "Save" ,  class: "bg-[#00ADEE] text-white hover:scale-105 transition-all ease-in-out duration-500 text-2xl flex items-center justify-center w-[250px] h-[50px]" %>
-    <%= link "Back", to: Routes.patient_path(@conn, :index) ,  class: "bg-red-500 text-white hover:scale-105 transition-all ease-in-out duration-500 text-2xl flex items-center justify-center w-[250px] h-[50px]" %>
+    <%= link "Back", to: Routes.patient_path(@conn, :index) ,  class: "bg-[#00ADEE] text-white hover:scale-105 transition-all ease-in-out duration-500 text-2xl flex items-center justify-center w-[250px] h-[50px]" %>
   </div>
 </.form>

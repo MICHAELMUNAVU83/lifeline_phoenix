@@ -30,10 +30,12 @@
               <p class="text-[#B2B1B1] font-semibold">Date of Birth:</p>
               <p><%= @patient.date_of_birth %> </p>
             </div>
+
+
           </div>
 
           <div class="flex flex-col md:border-l-2 border-t-2  md:border-t-0 p-8  w-[250px] h-[250px]   border-black justify-center      gap-4">
-           
+
 
             <div class="flex flex-col gap-2">
               <p class="text-[#B2B1B1] font-semibold">Phone Number:</p>
@@ -43,6 +45,11 @@
             <div class="flex flex-col gap-2">
               <p class="text-[#B2B1B1] font-semibold">Blood Group </p>
               <p><%= @patient.blood_group %> </p>
+            </div>
+
+             <div class="flex flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">Gender:</p>
+              <p><%= @patient.gender %> </p>
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ defmodule LifelinePhoenix.Repo.Migrations.CreatePatients do
       add :national_id, :integer
       add :telephone, :string
       add :blood_group, :string
+      add :gender, :string
       add :date_of_birth, :date
       add :diabetic, :boolean, default: false, null: false
       add :hypertensive, :boolean, default: false, null: false

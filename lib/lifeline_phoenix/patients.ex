@@ -25,6 +25,13 @@ defmodule LifelinePhoenix.Patients do
     Repo.all(Patient)
   end
 
+
+
+
+  def list_patients_for_doctor(doctor_id) do
+    Repo.all(from p in Patient, where: p.doctor_id == ^doctor_id)
+  end
+
   @doc """
   Gets a single patient.
 
