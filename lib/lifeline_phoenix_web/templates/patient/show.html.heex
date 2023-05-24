@@ -1,79 +1,201 @@
-<h1>Show Patient</h1>
 
-<ul>
 
-  <li>
-    <strong>First name:</strong>
-    <%= @patient.first_name %>
-  </li>
 
-  <li>
-    <strong>Last name:</strong>
-    <%= @patient.last_name %>
-  </li>
+<%= render "_sidebar.html" , assigns %>
 
-  <li>
-    <strong>National:</strong>
-    <%= @patient.national_id %>
-  </li>
 
-  <li>
-    <strong>Telephone:</strong>
-    <%= @patient.telephone %>
-  </li>
+<div class="ml-[250px] pt-4 ">
 
-  <li>
-    <strong>Blood group:</strong>
-    <%= @patient.blood_group %>
-  </li>
 
-  <li>
-    <strong>Date of birth:</strong>
-    <%= @patient.date_of_birth %>
-  </li>
 
-  <li>
-    <strong>Diabetic:</strong>
-    <%= @patient.diabetic %>
-  </li>
 
-  <li>
-    <strong>Hypertensive:</strong>
-    <%= @patient.hypertensive %>
-  </li>
 
-  <li>
-    <strong>Asthmatic:</strong>
-    <%= @patient.asthmatic %>
-  </li>
+ <div class="p-8 bg-[#DCF1F6] md:h-[300px] rounded-3xl w-[95%] mx-auto flex md:flex-row flex-col justify-around  items-center">
+          <div class="md:border-r-2 w-[250px] h-[250px] md:border-b-0 border-b-2 p-8  border-black ">
 
-</ul>
+            <img src={Routes.static_path(@conn, "/images/profile.png")} alt="doctor" class=" w-[220px] h-[200px] rounded-full   object-cover" />
+          </div>
+          <div class="flex w-[250px] h-[250px]  p-8 flex-col justify-center     gap-4">
+            <div class="flex  flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">First Name:</p>
+              <p><%= @patient.first_name %> </p>
+            </div>
 
-<span><%= link "Edit", to: Routes.patient_path(@conn, :edit, @patient) %></span> |
-<span><%= link "Back", to: Routes.patient_path(@conn, :index) %></span>
+            <div class="flex flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">Last Name:</p>
+              <p><%= @patient.last_name %> </p>
+            </div>
 
-<%= render "drug_allergy_form.html", patient: @patient, drug_allergy_changeset: @drug_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_drug_allergy, @patient) %>
-<%= render "food_allergy_form.html", patient: @patient, food_allergy_changeset: @food_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_food_allergy, @patient) %>
+            <div class="flex flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">Date of Birth:</p>
+              <p><%= @patient.date_of_birth %> </p>
+            </div>
+          </div>
 
-<div >
-  <h2>Drug Allergies</h2>
-<%= for drug_allergy <- @patient.drug_allergies do %>
-  <div class="review">
-     <p><%= drug_allergy.name %></p>
-  </div>
+          <div class="flex flex-col md:border-l-2 border-t-2  md:border-t-0 p-8  w-[250px] h-[250px]   border-black justify-center      gap-4">
+           
 
-<% end %>
+            <div class="flex flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">Phone Number:</p>
+              <p><%= @patient.telephone %> </p>
+            </div>
+
+            <div class="flex flex-col gap-2">
+              <p class="text-[#B2B1B1] font-semibold">Blood Group </p>
+              <p><%= @patient.blood_group %> </p>
+            </div>
+          </div>
+        </div>
+
+
+
+<div class="grid  grid-cols-2 gap-4">
+
+
+ <div class="flex md:flex-row flex-col justify-around  my-4 gap-4">
+          <div class="flex flex-col border-t-2  bg-[#F2F2F2] h-[200px]   border-[#2400FF] gap-2  w-[90%] mx-auto md:mx-0 ">
+            <p class="border-b-2 p-2 font-bold uppercase border-[#DCDCDC]">
+             Drug Allergies
+            </p>
+            <div class="p-4 h-[180px] overflow-y-scroll">
+              <ul class="list-disc p-2">
+              <%= for drug_allergy <- @patient.drug_allergies do %>
+                  <li><%= drug_allergy.name %></li>
+                <% end %>
+              </ul>
+            </div>
+
+
+          </div>
+
 
 </div>
 
 
-<div >
-  <h2>Food Allergies</h2>
-<%= for food_allergy <- @patient.food_allergies do %>
-  <div class="review">
-     <p><%= food_allergy.name %></p>
-  </div>
+ <div class="flex md:flex-row flex-col justify-around  my-4 gap-4">
+          <div class="flex flex-col border-t-2  bg-[#F2F2F2] h-[200px]   border-[#FF9F45] gap-2  w-[90%] mx-auto md:mx-0 ">
+            <p class="border-b-2 p-2 font-bold uppercase border-[#DCDCDC]">
+              Food Allergies
+            </p>
+            <div class="p-4 h-[180px] overflow-y-scroll">
+              <ul class="list-disc p-2">
+              <%= for food_allergy <- @patient.food_allergies do %>
+                  <li><%= food_allergy.name %></li>
+                <% end %>
+              </ul>
+            </div>
 
-<% end %>
+
+
+          </div>
+
+
+
+
+</div>
+
+
+ <div class="flex md:flex-row flex-col justify-around  my-4 gap-4">
+          <div class="flex flex-col border-t-2  bg-[#F2F2F2] h-[200px]   border-[#FF9F45] gap-2  w-[90%] mx-auto md:mx-0 ">
+            <p class="border-b-2 p-2 font-bold uppercase border-[#DCDCDC]">
+              Food Allergies
+            </p>
+            <div class="p-4 h-[180px] overflow-y-scroll">
+              <ul class="list-disc p-2">
+              <%= for food_allergy <- @patient.food_allergies do %>
+                  <li><%= food_allergy.name %></li>
+                <% end %>
+              </ul>
+            </div>
+
+
+
+          </div>
+          </div>
+
+
+
+ <div class="flex md:flex-row flex-col justify-around  my-4 gap-4">
+          <div class="flex flex-col border-t-2  bg-[#F2F2F2] h-[200px]   border-[#2400FF] gap-2  w-[90%] mx-auto md:mx-0 ">
+            <p class="border-b-2 p-2 font-bold uppercase border-[#DCDCDC]">
+              Pre Existing Conditions
+            </p>
+            <div class="p-4 h-[180px] overflow-y-scroll">
+             <%= if @patient.diabetic == true do %>
+                <p>Diabetic</p>
+              <% end %>
+               <%= if @patient.diabetic == false do %>
+                <p>Not Diabetic</p>
+              <% end %>
+              <%= if @patient.hypertensive == true do %>
+                <p>Hypertensive</p>
+              <% end %>
+
+                 <%= if @patient.hypertensive == false do %>
+                <p>Not Hypertensive</p>
+              <% end %>
+              <%= if @patient.asthmatic == true do %>
+                <p>Asthmatic</p>
+              <% end %>
+
+                 <%= if @patient.asthmatic == false do %>
+                <p>Not Asthmatic</p>
+              <% end %>
+
+
+            </div>
+
+              <p
+                class="bg-[#DCDCDC] cursor-pointer uppercase font-semibold p-2 text-center"
+
+              >
+
+                   <%= link "Update Pre Existing Condition", to: Routes.patient_path(@conn, :edit, @patient) %>
+              </p>
+
+          </div>
+
+
+
+
+
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+<h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
+          Add allergies
+        </h1>
+
+
+
+<div class="grid grid-cols-2 gap-4 my-8 ">
+                  <%= render "drug_allergy_form.html", patient: @patient, drug_allergy_changeset: @drug_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_drug_allergy, @patient) %>
+<%= render "food_allergy_form.html", patient: @patient, food_allergy_changeset: @food_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_food_allergy, @patient) %>
+
+
+</div>
+
 
 </div>

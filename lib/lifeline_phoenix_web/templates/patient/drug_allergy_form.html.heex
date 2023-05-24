@@ -1,11 +1,13 @@
 <%= form_for @drug_allergy_changeset, @action, fn f -> %>
-  <div class="form-group">
-   <label>Name</label>
-   <%= text_input f, :name  %>
+<div class="w-[90%]  mx-auto">
+  <div class="flex flex-col">
+   <label>Name of Drug Allergy</label>
+   <%= text_input f, :name  ,  class: "h-[50px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   </div>
 
 
-  <div class="form-group">
-    <%= submit "Add Drug allergy" %>
+  <div class="my-4">
+    <%= submit "Add Drug allergy" ,  class: "bg-[#00ADEE] text-white hover:scale-105 transition-all ease-in-out duration-500 text-xl w-[30%] h-[50px] rounded-sm"  %>
+  </div>
   </div>
 <% end %>
