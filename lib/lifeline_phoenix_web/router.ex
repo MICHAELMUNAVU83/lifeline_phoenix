@@ -21,7 +21,10 @@ defmodule LifelinePhoenixWeb.Router do
     pipe_through [:browser, :require_authenticated_doctor]
 
     get "/", PatientController, :index
-    resources "/patients", PatientController
+    resources "/patients", PatientController do
+      post "/drug_allergies", PatientController, :add_a_drug_allergy
+      post "/food_allergies", PatientController, :add_a_food_allergy
+    end
   end
 
   # Other scopes may use custom stacks.

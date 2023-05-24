@@ -13,6 +13,8 @@ defmodule LifelinePhoenix.Patients.Patient do
     field :national_id, :integer
     field :telephone, :string
     belongs_to(:doctor, LifelinePhoenix.Doctors.Doctor)
+    has_many(:drug_allergies, LifelinePhoenix.DrugAllergies.DrugAllergy)
+    has_many(:food_allergies, LifelinePhoenix.FoodAllergies.FoodAllergy)
 
     timestamps()
   end
