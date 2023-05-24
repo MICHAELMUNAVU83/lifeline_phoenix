@@ -8,6 +8,9 @@ defmodule LifelinePhoenix.Patients do
 
   alias LifelinePhoenix.Patients.Patient
   alias LifelinePhoenix.DrugAllergies
+  alias LifelinePhoenix.DrugAllergies.DrugAllergy
+  alias LifelinePhoenix.FoodAllergies
+  alias LifelinePhoenix.FoodAllergies.FoodAllergy
 
   @doc """
   Returns the list of patients.
@@ -108,6 +111,14 @@ defmodule LifelinePhoenix.Patients do
     drug_allergy_params
     |> Map.put("patient_id", patient_id)
     |> DrugAllergies.create_drug_allergy()
+
+  end
+
+
+  def add_food_allergy(patient_id , food_allergy_params) do
+    food_allergy_params
+    |> Map.put("patient_id", patient_id)
+    |> FoodAllergies.create_food_allergy()
 
   end
 end

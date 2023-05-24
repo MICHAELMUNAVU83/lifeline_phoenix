@@ -51,3 +51,29 @@
 
 <span><%= link "Edit", to: Routes.patient_path(@conn, :edit, @patient) %></span> |
 <span><%= link "Back", to: Routes.patient_path(@conn, :index) %></span>
+
+<%= render "drug_allergy_form.html", patient: @patient, drug_allergy_changeset: @drug_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_drug_allergy, @patient) %>
+<%= render "food_allergy_form.html", patient: @patient, food_allergy_changeset: @food_allergy_changeset, action: Routes. patient_patient_path(@conn, :add_a_food_allergy, @patient) %>
+
+<div >
+  <h2>Drug Allergies</h2>
+<%= for drug_allergy <- @patient.drug_allergies do %>
+  <div class="review">
+     <p><%= drug_allergy.name %></p>
+  </div>
+
+<% end %>
+
+</div>
+
+
+<div >
+  <h2>Food Allergies</h2>
+<%= for food_allergy <- @patient.food_allergies do %>
+  <div class="review">
+     <p><%= food_allergy.name %></p>
+  </div>
+
+<% end %>
+
+</div>

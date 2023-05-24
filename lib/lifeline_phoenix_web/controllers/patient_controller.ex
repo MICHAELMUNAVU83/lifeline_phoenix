@@ -3,8 +3,12 @@ defmodule LifelinePhoenixWeb.PatientController do
 
   alias LifelinePhoenix.Patients
   alias LifelinePhoenix.Patients.Patient
-  alias LifelinePhoenix.Reviews.Review
-  alias LifelinePhoenix.Reviews
+  alias LifelinePhoenix.DrugAllergies
+  alias LifelinePhoenix.DrugAllergies.DrugAllergy
+  alias LifelinePhoenix.FoodAllergies
+  alias LifelinePhoenix.FoodAllergies.FoodAllergy
+  alias LifelinePhoenix.Repo
+
 
 
   def index(conn, _params) do
@@ -31,9 +35,14 @@ defmodule LifelinePhoenixWeb.PatientController do
   end
 
   def show(conn, %{"id" => id}) do
-    patient = Patients.get_patient!(id)
-    render(conn, "show.html", patient: patient)
-  end
+    patient =
+      id
+      |> Patients.get_patient!()
+      |> Repo.preload([:drug_allergies, :food_allergies])
+    drug_allergy_changeset = DrugAllergy.changeset(%DrugAllergy{},%{})
+    food_allergy_changeset = FoodAllergy.changeset(%FoodAllergy{},%{})
+    render(conn, "show.html", patient: patient, drug_allergy_changeset: drug_allergy_changeset, food_allergy_changeset: food_allergy_changeset)
+ end
 
   def edit(conn, %{"id" => id}) do
     patient = Patients.get_patient!(id)
@@ -68,7 +77,7 @@ defmodule LifelinePhoenixWeb.PatientController do
   def add_a_drug_allergy(conn, %{"drug_allergy" => drug_allergy_params, "patient_id" => patient_id}) do
    patient =
      patient_id
-      |> Patients.get_book!()
+      |> Patients.get_patient!()
       |> Repo.preload([:drug_allergies])
      case Patients.add_drug_allergy(patient_id, drug_allergy_params) do
       {:ok, _drug_allergy} ->
@@ -83,6 +92,24 @@ defmodule LifelinePhoenixWeb.PatientController do
     end
   end
 
+  def add_a_food_allergy(conn, %{"food_allergy" => food_allergy_params, "patient_id" => patient_id}) do
+    patient =
+      patient_id
+       |> Patients.get_patient!()
+       |> Repo.preload([:food_allergies])
+      case Patients.add_food_allergy(patient_id, food_allergy_params) do
+       {:ok, _food_allergy} ->
+         conn
+         |> put_flash(:info, "food_allergy added :)")
+         |> redirect(to: Routes.patient_path(conn, :show, patient))
+       {:error, _error} ->
+         conn
+         |> put_flash(:error, "food_allergy not added :(")
+         |> redirect(to: Routes.patient_path(conn, :show, patient))
 
-  
+     end
+   end
+
+
+
 end
