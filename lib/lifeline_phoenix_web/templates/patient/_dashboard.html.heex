@@ -1,0 +1,14 @@
+  <div
+        class="w-[95%]  mx-auto flex justify-between   px-12 bg-[#CAC2DE] h-[200px] "
+        style="border-radius: 80px;"
+      >
+        <div class="flex md:text-5xl text-2xl py-8 gap-2 flex-col ">
+          <p class=" font-bold">Hi, <%= @current_doctor.first_name %>
+          </p>
+          <p class="text-[#757975] tetx-sm md:text-2xl">
+            Welcome to your dashboard
+          </p>
+        </div>
+
+         <img src={Routes.static_path(@conn, "/images/dashboardpic.png")} alt="doctor" class="h-[200px]   object-cover" />
+ </div>

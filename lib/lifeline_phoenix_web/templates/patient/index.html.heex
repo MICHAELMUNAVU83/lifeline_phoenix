@@ -4,40 +4,63 @@
 
 
 
- <div class="ml-[250px]">
+ <div class="ml-[250px] pt-4 ">
 
-<h1>Listing Patients</h1>
+<%= render "_dashboard.html" , assigns %>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>National</th>
-      <th>Telephone</th>
-      <th>Blood group</th>
-      <th>Date of birth</th>
-      <th>Diabetic</th>
-      <th>Hypertensive</th>
-      <th>Asthmatic</th>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+ <h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
+          Patients Recently Treated
+        </h1>
+
+
+
+
+<div class="w-[95%]  mx-auto overflow-x-auto ">
+          <table class="w-full  text-center">
+            <thead class="text-xs text-[#878787]  bg-[#CCCCCC] ">
+              <tr>
+
+                <th scope="col" class="px-6 py-3">
+                  First Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Last Name
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  National ID
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  telephone
+                </th>
+
+                <th scope="col" class="px-6 py-3">
+                  Blood Group
+                </th>
+                <th scope="col" class="px-6 py-3">
+                  Date of Birth
+                </th>
+                  <th scope="col" class="px-6 py-3">
+                 Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody>
 <%= for patient <- @patients do %>
-    <tr>
-      <td><%= patient.first_name %></td>
-      <td><%= patient.last_name %></td>
+    <tr class="bg-[#F2F2F2] text-gray-500 border-b-2 border-[#E1E1E1]">
+     <td>
+       <%= link patient.first_name, to: Routes.patient_path(@conn, :show, patient) %>
+       </td>
+      <td class="px-6 py-4 text-gray-600 font-medium"><%= patient.last_name %></td>
+
+
       <td><%= patient.national_id %></td>
       <td><%= patient.telephone %></td>
       <td><%= patient.blood_group %></td>
       <td><%= patient.date_of_birth %></td>
-      <td><%= patient.diabetic %></td>
-      <td><%= patient.hypertensive %></td>
-      <td><%= patient.asthmatic %></td>
 
-      <td>
+
+      <td class="space-x-2">
         <span><%= link "Show", to: Routes.patient_path(@conn, :show, patient) %></span>
         <span><%= link "Edit", to: Routes.patient_path(@conn, :edit, patient) %></span>
         <span><%= link "Delete", to: Routes.patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"] %></span>
@@ -46,6 +69,8 @@
 <% end %>
   </tbody>
 </table>
+
+</div>
 
 
 </div>
