@@ -35,4 +35,30 @@ defmodule LifelinePhoenixWeb.ConnCase do
     LifelinePhoenix.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  @doc """
+  Setup helper that registers and logs in doctors.
+
+      setup :register_and_log_in_doctor
+
+  It stores an updated connection and a registered doctor in the
+  test context.
+  """
+  def register_and_log_in_doctor(%{conn: conn}) do
+    doctor = LifelinePhoenix.AccountsFixtures.doctor_fixture()
+    %{conn: log_in_doctor(conn, doctor), doctor: doctor}
+  end
+
+  @doc """
+  Logs the given `doctor` into the `conn`.
+
+  It returns an updated `conn`.
+  """
+  def log_in_doctor(conn, doctor) do
+    token = LifelinePhoenix.Accounts.generate_doctor_session_token(doctor)
+
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:doctor_token, token)
+  end
 end

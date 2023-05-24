@@ -1,0 +1,53 @@
+<h1>Show Patient</h1>
+
+<ul>
+
+  <li>
+    <strong>First name:</strong>
+    <%= @patient.first_name %>
+  </li>
+
+  <li>
+    <strong>Last name:</strong>
+    <%= @patient.last_name %>
+  </li>
+
+  <li>
+    <strong>National:</strong>
+    <%= @patient.national_id %>
+  </li>
+
+  <li>
+    <strong>Telephone:</strong>
+    <%= @patient.telephone %>
+  </li>
+
+  <li>
+    <strong>Blood group:</strong>
+    <%= @patient.blood_group %>
+  </li>
+
+  <li>
+    <strong>Date of birth:</strong>
+    <%= @patient.date_of_birth %>
+  </li>
+
+  <li>
+    <strong>Diabetic:</strong>
+    <%= @patient.diabetic %>
+  </li>
+
+  <li>
+    <strong>Hypertensive:</strong>
+    <%= @patient.hypertensive %>
+  </li>
+
+  <li>
+    <strong>Asthmatic:</strong>
+    <%= @patient.asthmatic %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.patient_path(@conn, :edit, @patient) %></span> |
+<span><%= link "Back", to: Routes.patient_path(@conn, :index) %></span>

@@ -1,6 +1,8 @@
 defmodule LifelinePhoenixWeb.Router do
   use LifelinePhoenixWeb, :router
 
+  import LifelinePhoenixWeb.DoctorAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +10,7 @@ defmodule LifelinePhoenixWeb.Router do
     plug :put_root_layout, {LifelinePhoenixWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_doctor
   end
 
   pipeline :api do
@@ -15,9 +18,10 @@ defmodule LifelinePhoenixWeb.Router do
   end
 
   scope "/", LifelinePhoenixWeb do
-    pipe_through :browser
+    pipe_through [:browser, :require_authenticated_doctor]
 
-    get "/", PageController, :index
+    get "/", PatientController, :index
+    resources "/patients", PatientController
   end
 
   # Other scopes may use custom stacks.
@@ -52,5 +56,38 @@ defmodule LifelinePhoenixWeb.Router do
 
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
+  end
+
+  ## Authentication routes
+
+  scope "/", LifelinePhoenixWeb do
+    pipe_through [:browser, :redirect_if_doctor_is_authenticated]
+
+    get "/doctors/register", DoctorRegistrationController, :new
+    post "/doctors/register", DoctorRegistrationController, :create
+    get "/doctors/log_in", DoctorSessionController, :new
+    post "/doctors/log_in", DoctorSessionController, :create
+    get "/doctors/reset_password", DoctorResetPasswordController, :new
+    post "/doctors/reset_password", DoctorResetPasswordController, :create
+    get "/doctors/reset_password/:token", DoctorResetPasswordController, :edit
+    put "/doctors/reset_password/:token", DoctorResetPasswordController, :update
+  end
+
+  scope "/", LifelinePhoenixWeb do
+    pipe_through [:browser, :require_authenticated_doctor]
+
+    get "/doctors/settings", DoctorSettingsController, :edit
+    put "/doctors/settings", DoctorSettingsController, :update
+    get "/doctors/settings/confirm_email/:token", DoctorSettingsController, :confirm_email
+  end
+
+  scope "/", LifelinePhoenixWeb do
+    pipe_through [:browser]
+
+    delete "/doctors/log_out", DoctorSessionController, :delete
+    get "/doctors/confirm", DoctorConfirmationController, :new
+    post "/doctors/confirm", DoctorConfirmationController, :create
+    get "/doctors/confirm/:token", DoctorConfirmationController, :edit
+    post "/doctors/confirm/:token", DoctorConfirmationController, :update
   end
 end

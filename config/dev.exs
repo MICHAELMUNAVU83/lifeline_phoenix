@@ -2,8 +2,6 @@ import Config
 
 # Configure your database
 config :lifeline_phoenix, LifelinePhoenix.Repo,
-  username: "postgres",
-  password: "postgres",
   hostname: "localhost",
   database: "lifeline_phoenix_dev",
   stacktrace: true,
