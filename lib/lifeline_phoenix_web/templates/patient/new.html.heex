@@ -1,5 +1,4 @@
-<h1>New Patient</h1>
-
+<h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
+          Add  A New Patient
+        </h1>
 <%= render "form.html", Map.put(assigns, :action, Routes.patient_path(@conn, :create)) %>
-
-<span><%= link "Back", to: Routes.patient_path(@conn, :index) %></span>

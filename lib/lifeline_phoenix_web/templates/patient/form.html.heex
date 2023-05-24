@@ -5,43 +5,96 @@
     </div>
   <% end %>
 
+
+  <div class="flex flex-col gap-4 justify-center items-center">
+
+
+  <div class="flex flex-col">
+
   <%= label f, :first_name %>
-  <%= text_input f, :first_name %>
+  <%= text_input f, :first_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  "  %>
   <%= error_tag f, :first_name %>
+  </div>
+
+
+    <div class="flex flex-col">
 
   <%= label f, :last_name %>
-  <%= text_input f, :last_name %>
+  <%= text_input f, :last_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   <%= error_tag f, :last_name %>
+  </div>
+
+    <div class="flex flex-col">
 
   <%= label f, :national_id %>
-  <%= number_input f, :national_id %>
+  <%= number_input f, :national_id , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   <%= error_tag f, :national_id %>
 
+  </div>
+
+    <div class="flex flex-col">
+
   <%= label f, :telephone %>
-  <%= text_input f, :telephone %>
+  <%= text_input f, :telephone , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   <%= error_tag f, :telephone %>
 
+  </div>
+
+    <div class="flex flex-col">
+
   <%= label f, :blood_group %>
-  <%= text_input f, :blood_group %>
+  <%= text_input f, :blood_group , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
   <%= error_tag f, :blood_group %>
 
+  </div>
+
+    <div class="flex items-center justify-between gap-4">
+
   <%= label f, :date_of_birth %>
-  <%= date_select f, :date_of_birth %>
+  <%= date_select f, :date_of_birth  %>
   <%= error_tag f, :date_of_birth %>
+
+  </div>
+
+
+  <p class="text-2xl text-start font-bold text-gray-700">
+  Patient's Pre Existing Conditions
+  </p>
+
+
+  <div class="flex gap-8">
+
+    <div class="flex items-center gap-2">
 
   <%= label f, :diabetic %>
   <%= checkbox f, :diabetic %>
   <%= error_tag f, :diabetic %>
 
+  </div>
+
+    <div class="flex items-center gap-2">
+
   <%= label f, :hypertensive %>
   <%= checkbox f, :hypertensive %>
   <%= error_tag f, :hypertensive %>
 
+  </div>
+
+      <div class="flex items-center gap-2">
+
+
   <%= label f, :asthmatic %>
   <%= checkbox f, :asthmatic %>
   <%= error_tag f, :asthmatic %>
+  </div>
 
-  <div>
-    <%= submit "Save" %>
+  </div>
+
+
+  </div>
+
+  <div class="flex justify-center my-4  items-center gap-4">
+    <%= submit "Save" ,  class: "bg-[#00ADEE] text-white hover:scale-105 transition-all ease-in-out duration-500 text-2xl flex items-center justify-center w-[250px] h-[50px]" %>
+    <%= link "Back", to: Routes.patient_path(@conn, :index) ,  class: "bg-red-500 text-white hover:scale-105 transition-all ease-in-out duration-500 text-2xl flex items-center justify-center w-[250px] h-[50px]" %>
   </div>
 </.form>
