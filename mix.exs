@@ -51,7 +51,8 @@ defmodule LifelinePhoenix.MixProject do
       {:gettext, "~> 0.18"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:ex_fontawesome, "~> 0.7.2"}
+      {:ex_fontawesome, "~> 0.7.2"},
+      {:eqrcode, "~> 0.1.10"}
     ]
   end
 
