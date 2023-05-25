@@ -31,7 +31,5 @@ defmodule LifelinePhoenix.Repo.Migrations.CreateDoctorsAuthTables do
 
     create index(:doctors_tokens, [:doctor_id])
     create unique_index(:doctors_tokens, [:context, :token])
-
-
   end
 end

@@ -35,13 +35,18 @@ defmodule LifelinePhoenix.DrugAllergiesTest do
       drug_allergy = drug_allergy_fixture()
       update_attrs = %{name: "some updated name"}
 
-      assert {:ok, %DrugAllergy{} = drug_allergy} = DrugAllergies.update_drug_allergy(drug_allergy, update_attrs)
+      assert {:ok, %DrugAllergy{} = drug_allergy} =
+               DrugAllergies.update_drug_allergy(drug_allergy, update_attrs)
+
       assert drug_allergy.name == "some updated name"
     end
 
     test "update_drug_allergy/2 with invalid data returns error changeset" do
       drug_allergy = drug_allergy_fixture()
-      assert {:error, %Ecto.Changeset{}} = DrugAllergies.update_drug_allergy(drug_allergy, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               DrugAllergies.update_drug_allergy(drug_allergy, @invalid_attrs)
+
       assert drug_allergy == DrugAllergies.get_drug_allergy!(drug_allergy.id)
     end
 

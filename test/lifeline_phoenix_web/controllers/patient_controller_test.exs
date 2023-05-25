@@ -3,9 +3,39 @@ defmodule LifelinePhoenixWeb.PatientControllerTest do
 
   import LifelinePhoenix.PatientsFixtures
 
-  @create_attrs %{asthmatic: true, blood_group: "some blood_group", date_of_birth: ~D[2023-05-23], diabetic: true, first_name: "some first_name", hypertensive: true, last_name: "some last_name", national_id: 42, telephone: "some telephone"}
-  @update_attrs %{asthmatic: false, blood_group: "some updated blood_group", date_of_birth: ~D[2023-05-24], diabetic: false, first_name: "some updated first_name", hypertensive: false, last_name: "some updated last_name", national_id: 43, telephone: "some updated telephone"}
-  @invalid_attrs %{asthmatic: nil, blood_group: nil, date_of_birth: nil, diabetic: nil, first_name: nil, hypertensive: nil, last_name: nil, national_id: nil, telephone: nil}
+  @create_attrs %{
+    asthmatic: true,
+    blood_group: "some blood_group",
+    date_of_birth: ~D[2023-05-23],
+    diabetic: true,
+    first_name: "some first_name",
+    hypertensive: true,
+    last_name: "some last_name",
+    national_id: 42,
+    telephone: "some telephone"
+  }
+  @update_attrs %{
+    asthmatic: false,
+    blood_group: "some updated blood_group",
+    date_of_birth: ~D[2023-05-24],
+    diabetic: false,
+    first_name: "some updated first_name",
+    hypertensive: false,
+    last_name: "some updated last_name",
+    national_id: 43,
+    telephone: "some updated telephone"
+  }
+  @invalid_attrs %{
+    asthmatic: nil,
+    blood_group: nil,
+    date_of_birth: nil,
+    diabetic: nil,
+    first_name: nil,
+    hypertensive: nil,
+    last_name: nil,
+    national_id: nil,
+    telephone: nil
+  }
 
   describe "index" do
     test "lists all patients", %{conn: conn} do

@@ -9,11 +9,9 @@ defmodule LifelinePhoenix.Accounts.Doctor do
     field :last_name, :string
     field :first_name, :string
     field :phone_number, :integer
-    field :password_confirmation, :string , redact: true
+    field :password_confirmation, :string, redact: true
     field :national_doctor_id, :integer
     field :hospital_name, :string
-
-
 
     field :confirmed_at, :naive_datetime
     has_many(:patients, LifelinePhoenix.Patients.Patient)
@@ -40,18 +38,28 @@ defmodule LifelinePhoenix.Accounts.Doctor do
   """
   def registration_changeset(doctor, attrs, opts \\ []) do
     doctor
-    |> cast(attrs, [:email, :password, :password_confirmation, :first_name, :last_name, :phone_number, :national_doctor_id, :hospital_name])
+    |> cast(attrs, [
+      :email,
+      :password,
+      :password_confirmation,
+      :first_name,
+      :last_name,
+      :phone_number,
+      :national_doctor_id,
+      :hospital_name
+    ])
     |> validate_email()
     |> validate_password(opts)
-    |> validate_required([:first_name, :last_name, :phone_number, :national_doctor_id, :hospital_name])
+    |> validate_required([
+      :first_name,
+      :last_name,
+      :phone_number,
+      :national_doctor_id,
+      :hospital_name
+    ])
     |> unique_constraint(:email)
     |> unique_constraint(:national_doctor_id)
     |> validate_confirmation(:password)
-
-
-
-
-
   end
 
   defp validate_email(changeset) do
@@ -61,7 +69,6 @@ defmodule LifelinePhoenix.Accounts.Doctor do
     |> validate_length(:email, max: 160)
     |> unsafe_validate_unique(:email, LifelinePhoenix.Repo)
     |> unique_constraint(:email)
-
   end
 
   defp validate_password(changeset, opts) do
@@ -88,9 +95,6 @@ defmodule LifelinePhoenix.Accounts.Doctor do
       changeset
     end
   end
-
-
-
 
   @doc """
   A doctor changeset for changing the email.
@@ -140,7 +144,10 @@ defmodule LifelinePhoenix.Accounts.Doctor do
   If there is no doctor or the doctor doesn't have a password, we call
   `Bcrypt.no_user_verify/0` to avoid timing attacks.
   """
-  def valid_password?(%LifelinePhoenix.Accounts.Doctor{hashed_password: hashed_password}, password)
+  def valid_password?(
+        %LifelinePhoenix.Accounts.Doctor{hashed_password: hashed_password},
+        password
+      )
       when is_binary(hashed_password) and byte_size(password) > 0 do
     Bcrypt.verify_pass(password, hashed_password)
   end

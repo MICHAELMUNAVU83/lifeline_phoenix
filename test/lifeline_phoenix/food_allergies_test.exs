@@ -35,13 +35,18 @@ defmodule LifelinePhoenix.FoodAllergiesTest do
       food_allergy = food_allergy_fixture()
       update_attrs = %{name: "some updated name"}
 
-      assert {:ok, %FoodAllergy{} = food_allergy} = FoodAllergies.update_food_allergy(food_allergy, update_attrs)
+      assert {:ok, %FoodAllergy{} = food_allergy} =
+               FoodAllergies.update_food_allergy(food_allergy, update_attrs)
+
       assert food_allergy.name == "some updated name"
     end
 
     test "update_food_allergy/2 with invalid data returns error changeset" do
       food_allergy = food_allergy_fixture()
-      assert {:error, %Ecto.Changeset{}} = FoodAllergies.update_food_allergy(food_allergy, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               FoodAllergies.update_food_allergy(food_allergy, @invalid_attrs)
+
       assert food_allergy == FoodAllergies.get_food_allergy!(food_allergy.id)
     end
 

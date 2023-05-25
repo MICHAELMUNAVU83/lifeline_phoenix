@@ -17,8 +17,9 @@ config :lifeline_phoenix, LifelinePhoenixWeb.Endpoint,
   pubsub_server: LifelinePhoenix.PubSub,
   live_view: [signing_salt: "bRU/snFX"]
 
-
-  config :tailwind, version: "3.3.2", default: [
+config :tailwind,
+  version: "3.3.2",
+  default: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

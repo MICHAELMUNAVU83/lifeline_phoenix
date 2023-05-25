@@ -8,7 +8,17 @@ defmodule LifelinePhoenix.PatientsTest do
 
     import LifelinePhoenix.PatientsFixtures
 
-    @invalid_attrs %{asthmatic: nil, blood_group: nil, date_of_birth: nil, diabetic: nil, first_name: nil, hypertensive: nil, last_name: nil, national_id: nil, telephone: nil}
+    @invalid_attrs %{
+      asthmatic: nil,
+      blood_group: nil,
+      date_of_birth: nil,
+      diabetic: nil,
+      first_name: nil,
+      hypertensive: nil,
+      last_name: nil,
+      national_id: nil,
+      telephone: nil
+    }
 
     test "list_patients/0 returns all patients" do
       patient = patient_fixture()
@@ -21,7 +31,17 @@ defmodule LifelinePhoenix.PatientsTest do
     end
 
     test "create_patient/1 with valid data creates a patient" do
-      valid_attrs = %{asthmatic: true, blood_group: "some blood_group", date_of_birth: ~D[2023-05-23], diabetic: true, first_name: "some first_name", hypertensive: true, last_name: "some last_name", national_id: 42, telephone: "some telephone"}
+      valid_attrs = %{
+        asthmatic: true,
+        blood_group: "some blood_group",
+        date_of_birth: ~D[2023-05-23],
+        diabetic: true,
+        first_name: "some first_name",
+        hypertensive: true,
+        last_name: "some last_name",
+        national_id: 42,
+        telephone: "some telephone"
+      }
 
       assert {:ok, %Patient{} = patient} = Patients.create_patient(valid_attrs)
       assert patient.asthmatic == true
@@ -41,7 +61,18 @@ defmodule LifelinePhoenix.PatientsTest do
 
     test "update_patient/2 with valid data updates the patient" do
       patient = patient_fixture()
-      update_attrs = %{asthmatic: false, blood_group: "some updated blood_group", date_of_birth: ~D[2023-05-24], diabetic: false, first_name: "some updated first_name", hypertensive: false, last_name: "some updated last_name", national_id: 43, telephone: "some updated telephone"}
+
+      update_attrs = %{
+        asthmatic: false,
+        blood_group: "some updated blood_group",
+        date_of_birth: ~D[2023-05-24],
+        diabetic: false,
+        first_name: "some updated first_name",
+        hypertensive: false,
+        last_name: "some updated last_name",
+        national_id: 43,
+        telephone: "some updated telephone"
+      }
 
       assert {:ok, %Patient{} = patient} = Patients.update_patient(patient, update_attrs)
       assert patient.asthmatic == false

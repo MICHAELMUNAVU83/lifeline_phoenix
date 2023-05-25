@@ -4,7 +4,7 @@ defmodule LifelinePhoenix.FoodAllergies.FoodAllergy do
 
   schema "food_allergies" do
     field :name, :string
-   belongs_to(:patient, LifelinePhoenix.Patients.Patient)
+    belongs_to(:patient, LifelinePhoenix.Patients.Patient)
 
     timestamps()
   end

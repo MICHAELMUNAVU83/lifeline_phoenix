@@ -25,9 +25,6 @@ defmodule LifelinePhoenix.Patients do
     Repo.all(Patient)
   end
 
-
-
-
   def list_patients_for_doctor(doctor_id) do
     Repo.all(from p in Patient, where: p.doctor_id == ^doctor_id)
   end
@@ -113,19 +110,15 @@ defmodule LifelinePhoenix.Patients do
     Patient.changeset(patient, attrs)
   end
 
-
-  def add_drug_allergy(patient_id , drug_allergy_params) do
+  def add_drug_allergy(patient_id, drug_allergy_params) do
     drug_allergy_params
     |> Map.put("patient_id", patient_id)
     |> DrugAllergies.create_drug_allergy()
-
   end
 
-
-  def add_food_allergy(patient_id , food_allergy_params) do
+  def add_food_allergy(patient_id, food_allergy_params) do
     food_allergy_params
     |> Map.put("patient_id", patient_id)
     |> FoodAllergies.create_food_allergy()
-
   end
 end

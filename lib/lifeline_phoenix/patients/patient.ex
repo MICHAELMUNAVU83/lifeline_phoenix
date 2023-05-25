@@ -12,7 +12,7 @@ defmodule LifelinePhoenix.Patients.Patient do
     field :last_name, :string
     field :national_id, :integer
     field :telephone, :string
-    field :gender , :string
+    field :gender, :string
 
     belongs_to(:doctor, LifelinePhoenix.Doctors.Doctor)
     has_many(:drug_allergies, LifelinePhoenix.DrugAllergies.DrugAllergy)
@@ -24,7 +24,31 @@ defmodule LifelinePhoenix.Patients.Patient do
   @doc false
   def changeset(patient, attrs) do
     patient
-    |> cast(attrs, [:first_name, :last_name, :national_id, :telephone, :blood_group, :date_of_birth, :diabetic, :hypertensive, :asthmatic, :gender , :doctor_id])
-    |> validate_required([:first_name, :last_name, :national_id, :telephone, :blood_group, :date_of_birth, :diabetic, :hypertensive, :asthmatic, :gender , :doctor_id])
+    |> cast(attrs, [
+      :first_name,
+      :last_name,
+      :national_id,
+      :telephone,
+      :blood_group,
+      :date_of_birth,
+      :diabetic,
+      :hypertensive,
+      :asthmatic,
+      :gender,
+      :doctor_id
+    ])
+    |> validate_required([
+      :first_name,
+      :last_name,
+      :national_id,
+      :telephone,
+      :blood_group,
+      :date_of_birth,
+      :diabetic,
+      :hypertensive,
+      :asthmatic,
+      :gender,
+      :doctor_id
+    ])
   end
 end
