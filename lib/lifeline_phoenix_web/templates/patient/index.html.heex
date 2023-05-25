@@ -11,15 +11,78 @@
 
 
 
-<div>
+
+ <div class="flex w-[95%] py-16 mx-auto mt-2 md:flex-row flex-col justify-between gap-2 items-center">
+
+  <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#8CC63F]  flex items-center justify-between p-4">
+          <%= FontAwesome.icon("user", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+          <div class="flex items-end w-[50%] text-end text-white flex-col">
+            <p class="text-2xl font-bold">
+              <%= @total_patients %>
+
+              </p>
+
+            <p>Patient(s) under your care</p>
+          </div>
+        </div>
 
 
-<h1>Asthma Percentage: <%= @asthmatic_percentage %>%</h1>
-<h1>Diabetes Percentage: <%= @diabetic_percentage %>%</h1>
-<h1>Hypertension Percentage: <%= @hypertensive_percentage %>%</h1>
-<h1>Total Patients: <%= @total_patients %></h1>
 
-</div>
+
+          <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#FF9F45]    flex items-center justify-between p-4">
+          <%= FontAwesome.icon("chart-simple", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+          <div class="flex items-end w-[50%] text-end text-white flex-col">
+            <p class="text-2xl font-bold">
+              <%= @asthmatic_percentage %>
+
+              </p>
+
+            <p>Percentage of Asthmatic Patients</p>
+          </div>
+        </div>
+
+
+
+
+
+
+  <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px]  bg-[#737AFF]   flex items-center justify-between p-4">
+          <%= FontAwesome.icon("temperature-three-quarters", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+          <div class="flex items-end w-[50%] text-end text-white flex-col">
+            <p class="text-2xl font-bold">
+              <%= @diabetic_percentage %>
+
+              </p>
+
+            <p>Percentage of Diabetic Patients</p>
+          </div>
+        </div>
+
+
+
+
+        <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#2400FF]  flex items-center justify-between p-4">
+          <%= FontAwesome.icon("signal", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+          <div class="flex items-end w-[50%] text-end text-white flex-col">
+            <p class="text-2xl font-bold">
+              <%= @hypertensive_percentage %>
+
+              </p>
+
+            <p>Percentage of Hypertensive Patients</p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+ </div>
 
 
  <h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
