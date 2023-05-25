@@ -1,163 +1,131 @@
- <%= render "_sidebar.html", assigns %>
+<%= render("_sidebar.html", assigns) %>
 
+<div class="ml-[250px] pt-4 ">
+  <%= render("_dashboard.html", assigns) %>
 
+  <div class="flex w-[95%] py-16 mx-auto mt-2 md:flex-row flex-col justify-between gap-2 items-center">
+    <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px] bg-[#8CC63F]  flex items-center justify-between p-4">
+      <%= FontAwesome.icon("user",
+        type: "solid",
+        class: "h-[80px] cog text-white w-[80px]",
+        style: "color: white!important;"
+      ) %>
+      <div class="flex items-end w-[50%] text-end text-white flex-col">
+        <p class="text-2xl font-bold">
+          <%= @total_patients %>
+        </p>
 
+        <p>Patient(s) under your care</p>
+      </div>
+    </div>
 
+    <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out md:mx-0 mx-auto h-[150px] bg-[#FF9F45]    flex items-center justify-between p-4">
+      <%= FontAwesome.icon("chart-simple", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+      <div class="flex items-end w-[50%] text-end text-white flex-col">
+        <p class="text-2xl font-bold">
+          <%= @asthmatic_percentage %> %
+        </p>
 
- <div class="ml-[250px] pt-4 ">
+        <p>Percentage of Asthmatic Patients</p>
+      </div>
+    </div>
 
-<%= render "_dashboard.html" , assigns %>
+    <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px]  bg-[#737AFF]   flex items-center justify-between p-4">
+      <%= FontAwesome.icon("temperature-three-quarters",
+        type: "solid",
+        class: "h-[80px] text-white w-[80px]"
+      ) %>
+      <div class="flex items-end w-[50%] text-end text-white flex-col">
+        <p class="text-2xl font-bold">
+          <%= @diabetic_percentage %> %
+        </p>
 
+        <p>Percentage of Diabetic Patients</p>
+      </div>
+    </div>
 
+    <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out  md:mx-0 mx-auto h-[150px] bg-[#2400FF]  flex items-center justify-between p-4">
+      <%= FontAwesome.icon("signal", type: "solid", class: "h-[80px]  w-[80px]") %>
+      <div class="flex items-end w-[50%] text-end text-white flex-col">
+        <p class="text-2xl font-bold">
+          <%= @hypertensive_percentage %> %
+        </p>
 
+        <p>Percentage of Hypertensive Patients</p>
+      </div>
+    </div>
+  </div>
 
+  <h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
+    Patients Recently Treated
+  </h1>
 
- <div class="flex w-[95%] py-16 mx-auto mt-2 md:flex-row flex-col justify-between gap-2 items-center">
+  <div class="w-[95%]  mx-auto overflow-x-auto ">
+    <table class="w-full  text-center">
+      <thead class="text-xs text-[#878787]  bg-[#CCCCCC] ">
+        <tr>
+          <th scope="col" class="px-6 py-3">
+            First Name
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Last Name
+          </th>
+          <th scope="col" class="px-6 py-3">
+            National ID
+          </th>
+          <th scope="col" class="px-6 py-3">
+            telephone
+          </th>
 
-  <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px] bg-[#8CC63F]  flex items-center justify-between p-4">
-          <%= FontAwesome.icon("user", type: "solid", class: "h-[80px] cog text-white w-[80px]", style: "color: white!important;") %>
-          <div class="flex items-end w-[50%] text-end text-white flex-col">
-            <p class="text-2xl font-bold">
-              <%= @total_patients %>
+          <th scope="col" class="px-6 py-3">
+            Blood Group
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Date of Birth
+          </th>
+          <th scope="col" class="px-6 py-3">
+            Actions
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= for patient <- @patients do %>
+          <tr class="bg-[#F2F2F2] text-gray-500 border-b-2 border-[#E1E1E1]">
+            <td>
+              <%= link(patient.first_name, to: Routes.patient_path(@conn, :show, patient)) %>
+            </td>
+            <td class="px-6 py-4 text-gray-600 font-medium"><%= patient.last_name %></td>
 
-              </p>
+            <td><%= patient.national_id %></td>
+            <td><%= patient.telephone %></td>
+            <td><%= patient.blood_group %></td>
+            <td><%= patient.date_of_birth %></td>
 
-            <p>Patient(s) under your care</p>
-          </div>
-        </div>
+            <td class="flex gap-4 mt-4 justify-center items-center">
+              <%= link to: Routes.patient_path(@conn, :show, patient) do %>
+                <%= FontAwesome.icon("eye",
+                  type: "solid",
+                  class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer"
+                ) %>
+              <% end %>
 
+              <%= link to: Routes.patient_path(@conn, :edit, patient) do %>
+                <%= FontAwesome.icon("pen",
+                  type: "solid",
+                  class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer"
+                ) %>
+              <% end %>
 
-
-
-          <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out md:mx-0 mx-auto h-[150px] bg-[#FF9F45]    flex items-center justify-between p-4">
-          <%= FontAwesome.icon("chart-simple", type: "solid", class: "h-[80px] text-white w-[80px]") %>
-          <div class="flex items-end w-[50%] text-end text-white flex-col">
-            <p class="text-2xl font-bold">
-              <%= @asthmatic_percentage %> %
-
-              </p>
-
-            <p>Percentage of Asthmatic Patients</p>
-          </div>
-        </div>
-
-
-
-
-
-
-  <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px]  bg-[#737AFF]   flex items-center justify-between p-4">
-          <%= FontAwesome.icon("temperature-three-quarters", type: "solid", class: "h-[80px] text-white w-[80px]") %>
-          <div class="flex items-end w-[50%] text-end text-white flex-col">
-            <p class="text-2xl font-bold">
-              <%= @diabetic_percentage %> %
-
-              </p>
-
-            <p>Percentage of Diabetic Patients</p>
-          </div>
-        </div>
-
-
-
-
-        <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out  md:mx-0 mx-auto h-[150px] bg-[#2400FF]  flex items-center justify-between p-4">
-          <%= FontAwesome.icon("signal", type: "solid", class: "h-[80px]  w-[80px]")  %>
-          <div class="flex items-end w-[50%] text-end text-white flex-col">
-            <p class="text-2xl font-bold">
-              <%= @hypertensive_percentage %> %
-
-              </p>
-
-            <p>Percentage of Hypertensive Patients</p>
-          </div>
-        </div>
-
-
-
-
-
-
-
-
-
-
- </div>
-
-
- <h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
-          Patients Recently Treated
-        </h1>
-
-
-
-
-<div class="w-[95%]  mx-auto overflow-x-auto ">
-          <table class="w-full  text-center">
-            <thead class="text-xs text-[#878787]  bg-[#CCCCCC] ">
-              <tr>
-
-                <th scope="col" class="px-6 py-3">
-                  First Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Last Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  National ID
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  telephone
-                </th>
-
-                <th scope="col" class="px-6 py-3">
-                  Blood Group
-                </th>
-                <th scope="col" class="px-6 py-3">
-                  Date of Birth
-                </th>
-                  <th scope="col" class="px-6 py-3">
-                 Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-<%= for patient <- @patients do %>
-    <tr class="bg-[#F2F2F2] text-gray-500 border-b-2 border-[#E1E1E1]">
-     <td>
-       <%= link patient.first_name, to: Routes.patient_path(@conn, :show, patient) %>
-       </td>
-      <td class="px-6 py-4 text-gray-600 font-medium"><%= patient.last_name %></td>
-
-
-      <td><%= patient.national_id %></td>
-      <td><%= patient.telephone %></td>
-      <td><%= patient.blood_group %></td>
-      <td><%= patient.date_of_birth %></td>
-
-
-      <td class="flex gap-4 mt-4 justify-center items-center">
-        <%= link to: Routes.patient_path(@conn, :show, patient) do %>
-          <%= FontAwesome.icon("eye", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
+              <%= link to: Routes.patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"]  do %>
+                <%= FontAwesome.icon("trash",
+                  type: "solid",
+                  class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer"
+                ) %>
+              <% end %>
+            </td>
+          </tr>
         <% end %>
-
-
-        <%= link to: Routes.patient_path(@conn, :edit, patient) do %>
-          <%= FontAwesome.icon("pen", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
-        <% end %>
-
-
-      <%= link to: Routes.patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"]  do %>
-          <%= FontAwesome.icon("trash", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
-        <% end %>
-
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-</div>
-
-
+      </tbody>
+    </table>
+  </div>
 </div>

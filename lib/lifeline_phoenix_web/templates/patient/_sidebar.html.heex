@@ -1,13 +1,36 @@
 <div class="w-[250px] flex flex-col gap-4 justify-center items-center bg-[#00ADEE]  fixed h-[100vh]">
-  <img src={Routes.static_path(@conn, "/images/bluelogo.png")} alt="doctor" class="w-[180px]  m-4 object-cover" />
+  <img
+    src={Routes.static_path(@conn, "/images/bluelogo.png")}
+    alt="doctor"
+    class="w-[180px]  m-4 object-cover"
+  />
 
-  <%= link "Dashboard", to: Routes.patient_path(@conn, :index), class: "bg-white text-[#00ADEE] rounded-2xl w-[250px] text-center  py-2 " %>
+  <%= link("Dashboard",
+    to: Routes.patient_path(@conn, :index),
+    class: "bg-white text-[#00ADEE] rounded-2xl w-[250px] text-center  py-2 "
+  ) %>
 
-  <%= link "All Patients", to: Routes.patient_path(@conn, :index), class: "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 " %>
+  <%= link("All Patients",
+    to: Routes.patient_path(@conn, :index),
+    class:
+      "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 "
+  ) %>
 
+  <%= link("Add New Patient",
+    to: Routes.patient_path(@conn, :new),
+    class:
+      "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 "
+  ) %>
 
-<%= link "Add New Patient", to: Routes.patient_path(@conn, :new) ,  class: "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 " %>
-
- <%= link "Profile", to: Routes.doctor_settings_path(@conn, :edit) , class: "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 " %>
-  <%= link "Log out", to: Routes.doctor_session_path(@conn, :delete), method: :delete  , class: "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 "%>
+  <%= link("Profile",
+    to: Routes.doctor_settings_path(@conn, :edit),
+    class:
+      "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 "
+  ) %>
+  <%= link("Log out",
+    to: Routes.doctor_session_path(@conn, :delete),
+    method: :delete,
+    class:
+      "rounded-2xl hover:bg-white hover:text-[#00ADEE] duration-500 transition-all ease-out w-[250px] text-center  py-2 "
+  ) %>
 </div>

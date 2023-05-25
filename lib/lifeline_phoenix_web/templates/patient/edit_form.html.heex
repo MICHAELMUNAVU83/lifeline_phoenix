@@ -5,41 +5,35 @@
     </div>
   <% end %>
 
-
-
   <div class="flex flex-col justify-center items-center">
+    <div>
+      <%= label(f, :diabetic) %>
+      <%= checkbox(f, :diabetic) %>
+      <%= error_tag(f, :diabetic) %>
+    </div>
 
+    <div>
+      <%= label(f, :hypertensive) %>
+      <%= checkbox(f, :hypertensive) %>
+      <%= error_tag(f, :hypertensive) %>
+    </div>
 
-<div>
-  <%= label f, :diabetic %>
-  <%= checkbox f, :diabetic %>
-  <%= error_tag f, :diabetic %>
-  </div>
-
-
-  <div>
-
-
-  <%= label f, :hypertensive %>
-  <%= checkbox f, :hypertensive %>
-  <%= error_tag f, :hypertensive %>
-  </div>
-
-
-  <div>
-
-  <%= label f, :asthmatic %>
-  <%= checkbox f, :asthmatic %>
-  <%= error_tag f, :asthmatic %>
-  </div>
-
-
+    <div>
+      <%= label(f, :asthmatic) %>
+      <%= checkbox(f, :asthmatic) %>
+      <%= error_tag(f, :asthmatic) %>
+    </div>
   </div>
 
   <div class="flex gap-4 my-8 justify-center items-center">
-    <%= submit "Save" , class: "bg-blue-500 p-2 text-white hover:scale-105 duration-500 transition-all ease-in-out rounded-lg" %>
-    <%= link "Back", to: Routes.patient_path(@conn, :index) , class: "bg-red-500 p-2  hover:scale-105 duration-500 transition-all ease-in-out text-white rounded-lg" %>
-
+    <%= submit("Save",
+      class:
+        "bg-blue-500 p-2 text-white hover:scale-105 duration-500 transition-all ease-in-out rounded-lg"
+    ) %>
+    <%= link("Back",
+      to: Routes.patient_path(@conn, :index),
+      class:
+        "bg-red-500 p-2  hover:scale-105 duration-500 transition-all ease-in-out text-white rounded-lg"
+    ) %>
   </div>
-
 </.form>

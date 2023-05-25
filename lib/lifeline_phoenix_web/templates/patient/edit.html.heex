@@ -1,5 +1,7 @@
 <h1 class="text-gray-500 text-center text-xl md:text-4xl my-4 underline uppercase font-bold">
-          Update patient's Pre Existing Conditions
-        </h1>
-<%= render "edit_form.html", Map.put(assigns, :action, Routes.patient_path(@conn, :update, @patient)) %>
-
+  Update patient's Pre Existing Conditions
+</h1>
+<%= render(
+  "edit_form.html",
+  Map.put(assigns, :action, Routes.patient_path(@conn, :update, @patient))
+) %>
