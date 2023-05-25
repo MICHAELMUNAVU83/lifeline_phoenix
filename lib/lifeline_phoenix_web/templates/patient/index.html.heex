@@ -14,8 +14,8 @@
 
  <div class="flex w-[95%] py-16 mx-auto mt-2 md:flex-row flex-col justify-between gap-2 items-center">
 
-  <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#8CC63F]  flex items-center justify-between p-4">
-          <%= FontAwesome.icon("user", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+  <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px] bg-[#8CC63F]  flex items-center justify-between p-4">
+          <%= FontAwesome.icon("user", type: "solid", class: "h-[80px] cog text-white w-[80px]", style: "color: white!important;") %>
           <div class="flex items-end w-[50%] text-end text-white flex-col">
             <p class="text-2xl font-bold">
               <%= @total_patients %>
@@ -29,11 +29,11 @@
 
 
 
-          <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#FF9F45]    flex items-center justify-between p-4">
+          <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out md:mx-0 mx-auto h-[150px] bg-[#FF9F45]    flex items-center justify-between p-4">
           <%= FontAwesome.icon("chart-simple", type: "solid", class: "h-[80px] text-white w-[80px]") %>
           <div class="flex items-end w-[50%] text-end text-white flex-col">
             <p class="text-2xl font-bold">
-              <%= @asthmatic_percentage %>
+              <%= @asthmatic_percentage %> %
 
               </p>
 
@@ -46,11 +46,11 @@
 
 
 
-  <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px]  bg-[#737AFF]   flex items-center justify-between p-4">
+  <div class="md:w-[24%] w-[90%] md:mx-0 hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out mx-auto h-[150px]  bg-[#737AFF]   flex items-center justify-between p-4">
           <%= FontAwesome.icon("temperature-three-quarters", type: "solid", class: "h-[80px] text-white w-[80px]") %>
           <div class="flex items-end w-[50%] text-end text-white flex-col">
             <p class="text-2xl font-bold">
-              <%= @diabetic_percentage %>
+              <%= @diabetic_percentage %> %
 
               </p>
 
@@ -61,11 +61,11 @@
 
 
 
-        <div class="md:w-[25%] w-[90%] md:mx-0 mx-auto h-[150px] bg-[#2400FF]  flex items-center justify-between p-4">
-          <%= FontAwesome.icon("signal", type: "solid", class: "h-[80px] text-white w-[80px]") %>
+        <div class="md:w-[24%] w-[90%] hover:scale-105 cursor-pointer duration-500 transition-all ease-in-out  md:mx-0 mx-auto h-[150px] bg-[#2400FF]  flex items-center justify-between p-4">
+          <%= FontAwesome.icon("signal", type: "solid", class: "h-[80px]  w-[80px]")  %>
           <div class="flex items-end w-[50%] text-end text-white flex-col">
             <p class="text-2xl font-bold">
-              <%= @hypertensive_percentage %>
+              <%= @hypertensive_percentage %> %
 
               </p>
 
