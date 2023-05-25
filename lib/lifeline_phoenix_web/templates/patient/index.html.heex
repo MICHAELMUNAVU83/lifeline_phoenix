@@ -136,10 +136,21 @@
       <td><%= patient.date_of_birth %></td>
 
 
-      <td class="space-x-2">
-        <span><%= link "Show", to: Routes.patient_path(@conn, :show, patient) %></span>
-        <span><%= link "Edit", to: Routes.patient_path(@conn, :edit, patient) %></span>
-        <span><%= link "Delete", to: Routes.patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      <td class="flex gap-4 mt-4 justify-center items-center">
+        <%= link to: Routes.patient_path(@conn, :show, patient) do %>
+          <%= FontAwesome.icon("eye", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
+        <% end %>
+
+
+        <%= link to: Routes.patient_path(@conn, :edit, patient) do %>
+          <%= FontAwesome.icon("pen", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
+        <% end %>
+
+
+      <%= link to: Routes.patient_path(@conn, :delete, patient), method: :delete, data: [confirm: "Are you sure?"]  do %>
+          <%= FontAwesome.icon("trash", type: "solid", class: "text-[#878787] h-6 w-6 hover:text-[#8CC63F] cursor-pointer") %>
+        <% end %>
+
       </td>
     </tr>
 <% end %>

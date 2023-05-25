@@ -12,7 +12,7 @@
   <div class="flex flex-col">
 
   <%= label f, :first_name %>
-  <%= text_input f, :first_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  "  %>
+  <%= text_input f, :first_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " ,required: true  %>
   <%= error_tag f, :first_name %>
   </div>
 
@@ -20,7 +20,7 @@
     <div class="flex flex-col">
 
   <%= label f, :last_name %>
-  <%= text_input f, :last_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
+  <%= text_input f, :last_name , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " ,required: true %>
   <%= error_tag f, :last_name %>
   </div>
 
@@ -29,7 +29,7 @@
   <p>
     National Doctor ID
   </p>
-  <%= number_input f, :national_id , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
+  <%= number_input f, :national_id , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " ,required: true %>
   <%= error_tag f, :national_id %>
 
   </div>
@@ -37,7 +37,7 @@
     <div class="flex flex-col">
 
   <%= label f, :telephone %>
-  <%= text_input f, :telephone , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  " %>
+  <%= text_input f, :telephone , class: "h-[50px] w-[600px] p-2  my-2 border-transparent focus:border-transparent focus:ring-0 bg-[#F2F2F2] shadow-xl shadow-[#E1DFDF]  ",required: true %>
   <%= error_tag f, :telephone %>
 
   </div>
@@ -45,7 +45,7 @@
     <div class="flex flex-col">
 
   <%= label f, :blood_group %>
- <%= select f, :blood_group, ["Select one","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300" %>
+ <%= select f, :blood_group, ["Select one","A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300",required: true %>
 
   <%= error_tag f, :blood_group %>
 
@@ -56,7 +56,7 @@
    <div class="flex flex-col">
 
   <%= label f, :gender %>
- <%= select f, :gender, ["Select one","male", "female"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300" %>
+ <%= select f, :gender, ["Select one","male", "female"], class: "h-12 w-[600px] p-2 my-2 border-transparent focus:border-transparent focus:ring-0 bg-gray-200 shadow-xl shadow-gray-300" ,required: true %>
 
   <%= error_tag f, :gender %>
 
