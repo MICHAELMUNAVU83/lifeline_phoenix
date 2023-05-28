@@ -65,6 +65,9 @@
       <thead class="text-xs text-[#878787]  bg-[#CCCCCC] ">
         <tr>
           <th scope="col" class="px-6 py-3">
+            Image
+          </th>
+           <th scope="col" class="px-6 py-3">
             First Name
           </th>
           <th scope="col" class="px-6 py-3">
@@ -91,6 +94,10 @@
       <tbody>
         <%= for patient <- @patients do %>
           <tr class="bg-[#F2F2F2] text-gray-500 border-b-2 border-[#E1E1E1]">
+                     <td>
+  <%= img_tag LifelinePhoenix.FileImage.url({patient.picture, patient}, signed: true)
+  %>
+</td>
             <td>
               <%= link(patient.first_name, to: Routes.patient_path(@conn, :show, patient)) %>
             </td>
@@ -100,6 +107,7 @@
             <td><%= patient.telephone %></td>
             <td><%= patient.blood_group %></td>
             <td><%= patient.date_of_birth %></td>
+
 
             <td class="flex gap-4 mt-4 justify-center items-center">
               <%= link to: Routes.patient_path(@conn, :show, patient) do %>

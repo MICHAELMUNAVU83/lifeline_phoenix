@@ -13,6 +13,7 @@ defmodule LifelinePhoenix.Patients.Patient do
     field :national_id, :integer
     field :telephone, :string
     field :gender, :string
+    field :picture, LifelinePhoenix.FileImage.Type
 
     belongs_to(:doctor, LifelinePhoenix.Doctors.Doctor)
     has_many(:drug_allergies, LifelinePhoenix.DrugAllergies.DrugAllergy)
@@ -35,7 +36,8 @@ defmodule LifelinePhoenix.Patients.Patient do
       :hypertensive,
       :asthmatic,
       :gender,
-      :doctor_id
+      :doctor_id,
+      :picture
     ])
     |> validate_required([
       :first_name,
@@ -48,6 +50,7 @@ defmodule LifelinePhoenix.Patients.Patient do
       :hypertensive,
       :asthmatic,
       :gender,
+      :picture,
       :doctor_id
     ])
   end
