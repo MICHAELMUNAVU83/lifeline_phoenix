@@ -4,9 +4,10 @@ defmodule LifelinePhoenix.FileImage do
   @versions [:original]
 
   # Whitelist file extensions:
-  def  validate({file, _}) do
+  def validate({file, _}) do
     file_extension = file.file_name |> Path.extname() |> String.downcase()
-    case  Enum.member?(~w(.jpg .jpeg .gif .png), file_extension) do
+
+    case Enum.member?(~w(.jpg .jpeg .gif .png), file_extension) do
       true -> :ok
       false -> {:error, "invalid file type"}
     end
@@ -14,8 +15,6 @@ defmodule LifelinePhoenix.FileImage do
 
   # Include ecto support (requires package waffle_ecto installed):
   # use Waffle.Ecto.Definition
-
-
 
   # To add a thumbnail version:
   # @versions [:original, :thumb]

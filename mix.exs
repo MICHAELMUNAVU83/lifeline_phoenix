@@ -53,7 +53,7 @@ defmodule LifelinePhoenix.MixProject do
       {:plug_cowboy, "~> 2.5"},
       {:ex_fontawesome, "~> 0.7.2"},
       {:eqrcode, "~> 0.1.10"},
-      {:waffle,  "~> 1.1.5"},
+      {:waffle, "~> 1.1.5"},
       {:waffle_ecto, "~> 0.0.11"}
     ]
   end
